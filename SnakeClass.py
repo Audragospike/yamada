@@ -16,6 +16,8 @@ SegmentGap = 5
 SegmentX = 0
 SegmentY = 0
 
+Yamada = 0
+
 XChange = SegmentWidth + SegmentGap
 YChange = 0
 #建立Segment類別
@@ -32,10 +34,10 @@ class Segment(pygame.sprite.Sprite):
 pygame.init() #初始遊戲
 size = (500, 500)  #尺寸
 screen = pygame.display.set_mode(size) #建立視窗
-pygame.display.set_caption("我的遊戲") #建立標題
+
 done = False  #遊戲開關
 clock = pygame.time.Clock() #畫面更新速度
-
+pygame.display.set_caption("Yamada") #建立標題
 AllSegmentGroup = pygame.sprite.Group()
 AllSegmentQueue = Queue()
 
@@ -92,6 +94,8 @@ while not done:  #重複執行直到按下X結束
         CheeseY = random.randrange(0, 25) * 20
         CheeseSegment = Segment(CheeseX, CheeseY, green)
         AllSegmentGroup.add(CheeseSegment)
+        Yamada += 1
+        pygame.display.set_caption(str(Yamada)) #ya motha
     
     else:
         LastQueue = AllSegmentQueue.get()
